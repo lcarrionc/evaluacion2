@@ -8,6 +8,7 @@ npm-debug.log*
 
 # Environment variables
 .envexample
+.env
 
 # Build output
 dist/
