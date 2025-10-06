@@ -1,7 +1,7 @@
 // models/Vehiculo.js
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
-const Marca = require("./marca");
+const Marca = require("./Marca");
 
 const Vehiculo = sequelize.define(
   "Vehiculo",
