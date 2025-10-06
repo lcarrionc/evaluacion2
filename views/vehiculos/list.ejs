@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de Vehículos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <div class="max-w-6xl mx-auto py-10">
+    <h1 class="text-3xl font-bold mb-6 text-center">Vehículos Registrados</h1>
+
+    <div class="mb-4 flex justify-end">
+      <a href="/vehiculos/new" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        + Nuevo Vehículo
+      </a>
+    </div>
+
+    <table class="min-w-full bg-white rounded shadow">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 border-b">#</th>
+          <th class="py-2 px-4 border-b">Modelo</th>
+          <th class="py-2 px-4 border-b">Precio</th>
+          <th class="py-2 px-4 border-b">Marca</th>
+          <th class="py-2 px-4 border-b">Imagen</th>
+          <th class="py-2 px-4 border-b">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% vehiculos.forEach((vehiculo, index) => { %>
+          <tr class="hover:bg-gray-50">
+            <td class="py-2 px-4 border-b"><%= index + 1 %></td>
+            <td class="py-2 px-4 border-b"><%= vehiculo.modelo %></td>
+            <td class="py-2 px-4 border-b">S/ <%= vehiculo.precio %></td>
+            <td class="py-2 px-4 border-b"><%= vehiculo.Marca ? vehiculo.Marca.nombre : 'Sin marca' %></td>
+            <td class="py-2 px-4 border-b">
+              <% if (vehiculo.imagen_vehiculo) { %>
+                <img src="/uploads/<%= vehiculo.imagen_vehiculo %>" alt="Vehículo" class="h-12 object-cover">
+              <% } else { %>
+                <span class="text-gray-400">Sin imagen</span>
+              <% } %>
+            </td>
+            <td class="py-2 px-4 border-b">
+              <a href="/vehiculos/<%= vehiculo.id_vehiculo %>/edit" class="text-blue-600 hover:underline mr-2">Editar</a>
+              <form action="/vehiculos/<%= vehiculo.id_vehiculo %>" method="POST" class="inline">
+                <button type="submit" class="text-red-600 hover:underline">Eliminar</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

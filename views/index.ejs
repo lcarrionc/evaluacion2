@@ -1,0 +1,13 @@
+<h1 class="text-2xl mb-4">Listado de Vehículos</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+  <% vehiculos.forEach(v => { %>
+    <div class="bg-white p-4 shadow rounded">
+      <% if (v.imagen_vehiculo) { %>
+        <img src="<%= v.imagen_vehiculo %>" class="h-40 w-full object-cover mb-2" alt="imagen"/>
+      <% } %>
+      <h3 class="font-bold"><%= v.modelo %></h3>
+      <p>Precio: S/ <%= v.precio %></p>
+      <p>Marca: <%= v.marca ? v.marca.nombre : 'Sin marca' %></p>
+    </div>
+  <% }) %>
+</div>

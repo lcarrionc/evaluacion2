@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title><%= typeof title !== 'undefined' ? title : 'Vehículos' %></title>
+  <!-- Tailwind CDN (rápido para dev/ejercicio) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <nav class="bg-white shadow p-4">
+    <div class="container mx-auto flex justify-between">
+      <div>
+        <a href="/" class="font-bold">Vehículos</a>
+        <a href="/marcas" class="ml-4">Marcas</a>
+        <a href="/vehiculos" class="ml-4">Vehículos (admin)</a>
+      </div>
+      <div>
+        <% if (user) { %>
+          <span class="mr-4">Hola, <%= user.username %></span>
+          <a href="/logout" class="text-red-500">Salir</a>
+        <% } else { %>
+          <a href="/login" class="text-blue-600">Iniciar sesión</a>
+        <% } %>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container mx-auto p-6">
+    <%- body %>
+  </main>
+</body>
+</html>

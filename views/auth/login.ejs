@@ -1,0 +1,15 @@
+<h2 class="text-2xl mb-4">Iniciar sesión</h2>
+<form action="/login" method="POST" class="max-w-md">
+  <% if (error) { %>
+    <div class="bg-red-100 text-red-700 p-2 mb-2"><%= error %></div>
+  <% } %>
+  <div class="mb-2">
+    <label>Usuario</label>
+    <input name="username" class="w-full border p-2" />
+  </div>
+  <div class="mb-2">
+    <label>Contraseña</label>
+    <input type="password" name="password" class="w-full border p-2" />
+  </div>
+  <button class="bg-blue-600 text-white py-2 px-4 rounded">Entrar</button>
+</form>

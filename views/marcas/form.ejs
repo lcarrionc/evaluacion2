@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= (typeof accion !== 'undefined' && accion === 'editar') ? 'Editar Marca' : 'Nueva Marca' %></title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+
+  <div class="max-w-lg mx-auto py-10">
+    <h1 class="text-2xl font-bold mb-6 text-center">
+      <%= (typeof accion !== 'undefined' && accion === 'editar') ? 'Editar Marca' : ' Registrar Nueva Marca' %>
+    </h1>
+    <form action="<%= (typeof accion !== 'undefined' && accion === 'editar') ? ('/marcas/editar/' + marca.id_marca) : '/marcas' %>"
+      method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow">
+      <div class="mb-4">
+        <label class="block mb-1 font-semibold">Nombre</label>
+        <input type="text" name="nombre" value="<%= marca ? marca.nombre : '' %>" required
+          class="w-full border rounded px-3 py-2">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-1 font-semibold">País de Origen</label>
+        <input type="text" name="pais_origen" value="<%= marca ? marca.pais_origen : '' %>" required
+          class="w-full border rounded px-3 py-2">
+      </div>
+
+      <div class="mb-4">
+        <label class="block mb-1 font-semibold">Imagen de Marca</label>
+        <input type="file" name="imagen_marca" accept="image/*" class="w-full">
+        <% if (marca && marca.imagen_marca) { %>
+          <img src="/uploads/<%= marca.imagen_marca %>" alt="Marca" class="h-20 mt-2 object-cover">
+        <% } %>
+      </div>
+
+      <div class="flex justify-end">
+        <a href="/marcas" class="bg-gray-400 text-white px-4 py-2 rounded mr-2 hover:bg-gray-500">Cancelar</a>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          Guardar
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+</body>
+</html>
