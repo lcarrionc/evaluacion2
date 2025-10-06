@@ -7,8 +7,8 @@ exports.loginForm = (req, res) => {
 
 exports.login = (req, res) => {
   const { username, password } = req.body;
-  const admin = process.env.ADMIN_USER || 'admin';
-  const pass = process.env.ADMIN_PASS || 'admin123';
+  const admin = 'admin';
+  const pass = 'admin123';
 
   if (username === admin && password === pass) {
     req.session.authenticated = true;
