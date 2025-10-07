@@ -4,7 +4,6 @@ const { Sequelize } = require('sequelize');
 let sequelize;
 
 if (process.env.DATABASE_URL) {
-  // Para Render u otros servicios que dan DATABASE_URL
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     protocol: 'postgres',
@@ -25,7 +24,13 @@ if (process.env.DATABASE_URL) {
       host: process.env.DB_HOST || 'dpg-d3i213e3jp1c73fv31fg-a.oregon-postgres.render.com',
       port: process.env.DB_PORT || 5432,
       dialect: 'postgres',
-      logging: false
+      logging: false,
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false
+        }
+      }
     }
   );
 }
