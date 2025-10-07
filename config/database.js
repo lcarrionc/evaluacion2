@@ -17,7 +17,7 @@ if (process.env.DATABASE_URL) {
   });
 } else {
   sequelize = new Sequelize(
-    process.env.DB_NAME || 'examen2',
+    process.env.DB_NAME || 'dbexamen2',
     process.env.DB_USER || 'dbexamen2_user',
     process.env.DB_PASS || 't4nLIIXM1sNxv2WlFYLZtZRYNva3uoTt',
     {
